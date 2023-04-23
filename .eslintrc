@@ -1,0 +1,86 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["@typescript-eslint", "react-hooks", "prettier"],
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off",
+    // this two jsx rules are to enable the new jsx transform
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    // this rule enables require statements in the webpack config files
+    "@typescript-eslint/no-var-requires": 0,
+    // this rule enables using empty functions
+    "@typescript-eslint/no-empty-function": "off",
+    "sort-imports": "off",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "import/no-unresolved": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "external",
+          "builtin",
+          "internal",
+          "parent",
+          "index",
+          "sibling"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "**/*.+(css|sass|less|scss|pcss|styl)",
+            "group": "object",
+            "position": "after"
+          },
+          {
+            "pattern": "{.,..}/**/*.+(css|sass|less|scss|pcss|styl)",
+            "group": "object",
+            "position": "after"
+          }
+        ],
+        "newlines-between": "never",
+        "warnOnUnassignedImports": true,
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "endOfLine": "auto",
+        "printWidth": 80
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["src"]
+      }
+    }
+  }
+}
