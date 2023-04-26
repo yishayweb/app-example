@@ -53,6 +53,7 @@ module.exports = () => {
         chunks: 'all',
       },
       runtimeChunk: true,
+      usedExports: true,
     },
     resolve: {
       extensions: ['.tsx', '.ts', '.jsx', '.js'],
@@ -63,7 +64,6 @@ module.exports = () => {
       }),
       new HtmlWebpackPlugin({
         template: 'public/index.html',
-        favicon: './assets/images/favicon.png',
         minify: false,
         inject: 'body',
       }),
